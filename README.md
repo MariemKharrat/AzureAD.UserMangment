@@ -1,5 +1,5 @@
 # AzureAD.UserMangment
-Manage your Azure AD users
+Manage your Azure AD users -  download from [Nuget Package](https://www.nuget.org/packages/AzureAD.UserMangment/).
 
 1. Intialiaze the Graph Client
 ```csharp
