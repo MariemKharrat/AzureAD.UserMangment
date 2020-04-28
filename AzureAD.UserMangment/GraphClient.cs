@@ -35,6 +35,15 @@ namespace AzureAD.UserMangment
             var rest = await SendGraphGetRequest("/users", query);
             return rest;
         }
+        public async Task<bool> Exist(string userPrincipalName = "")
+        {
+            var rest = await SendGraphGetRequest("/users", userPrincipalName);
+            var user = JsonConvert.DeserializeObject<List<User>>(rest);
+            if (user.Count() == 0) return false;
+            else return true;
+           
+        }
+
 
         public async Task<string> CreateUser(User u)
         {
@@ -127,6 +136,7 @@ namespace AzureAD.UserMangment
 
         private async Task<string> SendGraphPostRequest(string api, string json)
         {
+            
             // NOTE: This client uses ADAL v2, not ADAL v4
             AuthenticationResult result = await authContext.AcquireTokenAsync(Globals.aadGraphResourceId, credential);
             HttpClient http = new HttpClient();
