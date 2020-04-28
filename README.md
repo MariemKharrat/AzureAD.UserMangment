@@ -31,7 +31,13 @@ Manage your Azure AD users
 ```csharp
         var enablereslt = graphClient.EnableUser(user.First().objectId).Result;
 ```
-6. Create new user
+6. Check if user exist
+
+```csharp
+           var exist = graphClient.Exist(c.userPrincipalName).Result;
+```
+
+7. Create new user
 
 ```csharp
           var user = new User()
