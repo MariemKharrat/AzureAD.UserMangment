@@ -1,5 +1,5 @@
 # AzureAD.UserMangment
-Manage your Azure AD users
+Manage your Azure AD users -  download from [Nuget Package](https://www.nuget.org/packages/AzureAD.UserMangment/).
 
 1. Intialiaze the Graph Client
 ```csharp
@@ -31,7 +31,13 @@ Manage your Azure AD users
 ```csharp
         var enablereslt = graphClient.EnableUser(user.First().objectId).Result;
 ```
-6. Create new user
+6. Check if user exist
+
+```csharp
+           var exist = graphClient.Exist(c.userPrincipalName).Result;
+```
+
+7. Create new user
 
 ```csharp
           var user = new User()
