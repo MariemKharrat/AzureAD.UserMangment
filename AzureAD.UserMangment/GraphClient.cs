@@ -60,6 +60,11 @@ namespace AzureAD.UserMangment
             string json = "{\n  \"accountEnabled\":\"false\"\n}";
             return await SendGraphPatchRequest("/users/" + objectId, json);
         }
+        public async Task<string> UpdatePassword(string objectId,string password,bool forceChange=false)
+        {
+            string json = "{\"passwordProfile\":{\"password\":\""+password+ "\",\"forceChangePasswordNextLogin\":" + forceChange + "}}";
+            return await SendGraphPatchRequest("/users/" + objectId, json);
+        }
 
         public async Task<string> UpdateUser(string objectId, string json)
         {
